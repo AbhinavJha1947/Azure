@@ -1,0 +1,44 @@
+<policies>
+    <inbound>
+        <base />
+        <!-- Rate limiting by IP -->
+        <rate-limit-by-key calls="10" renewal-period="60" counter-key="@(context.Request.IpAddress)" />
+        
+        <!-- Add custom header to backend request -->
+        <set-header name="X-Demo-Header" exists-action="override">
+            <value>AzureAPIMDemo</value>
+        </set-header>
+
+        <!-- CORS Policy -->
+        <cors allow-credentials="true">
+            <allowed-origins>
+                <origin>https://demo.example.com</origin>
+            </allowed-origins>
+            <allowed-methods>
+                <method>GET</method>
+                <method>POST</method>
+            </allowed-methods>
+        </cors>
+
+        <!-- JWT Validation -->
+        <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
+            <openid-config url="https://login.microsoftonline.com/{tenant-id}/v2.0/.well-known/openid-configuration" />
+            <required-claims>
+                <claim name="aud">
+                    <value>{client-id}</value>
+                </claim>
+            </required-claims>
+        </validate-jwt>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+        <!-- Mask sensitive headers in response -->
+        <set-header name="X-Powered-By" exists-action="delete" />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

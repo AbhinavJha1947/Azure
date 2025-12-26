@@ -1,0 +1,77 @@
+# Azure DevOps - Release Pipeline Example (Classic)
+# This shows the structure of a release pipeline in YAML format
+# Note: Classic Release Pipelines are UI-based, but this shows the concept
+
+trigger: none  # This is a release pipeline, triggered manually or by build completion
+
+variables:
+  - group: Production-Variables  # Variable group from Azure DevOps Library
+
+stages:
+- stage: DeployToStaging
+  displayName: 'Deploy to Staging Environment'
+  jobs:
+  - deployment: DeployStagingJob
+    environment: 'Staging'
+    pool:
+      vmImage: 'ubuntu-latest'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          
+          - task: AzureWebApp@1
+            inputs:
+              azureSubscription: 'Azure-Service-Connection'
+              appType: 'webAppLinux'
+              appName: 'myapp-staging'
+              package: '$(Pipeline.Workspace)/drop/**/*.zip'
+              deploymentMethod: 'auto'
+
+- stage: ApprovalGate
+  displayName: 'Manual Approval for Production'
+  dependsOn: DeployToStaging
+  jobs:
+  - job: waitForValidation
+    displayName: 'Wait for external validation'
+    pool: server
+    timeoutInMinutes: 4320 # 3 days
+    steps:
+    - task: ManualValidation@0
+      inputs:
+        notifyUsers: 'admin@example.com'
+        instructions: 'Please validate staging and approve production deployment'
+
+- stage: DeployToProduction
+  displayName: 'Deploy to Production Environment'
+  dependsOn: ApprovalGate
+  jobs:
+  - deployment: DeployProdJob
+    environment: 'Production'
+    pool:
+      vmImage: 'ubuntu-latest'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          
+          - task: AzureWebApp@1
+            inputs:
+              azureSubscription: 'Azure-Service-Connection'
+              appType: 'webAppLinux'
+              appName: 'myapp-production'
+              package: '$(Pipeline.Workspace)/drop/**/*.zip'
+              deploymentMethod: 'auto'
+              
+          - task: AzureAppServiceManage@0
+            inputs:
+              azureSubscription: 'Azure-Service-Connection'
+              Action: 'Swap Slots'
+              WebAppName: 'myapp-production'
+              ResourceGroupName: 'myResourceGroup'
+              SourceSlot: 'staging'
+              SwapWithProduction: true

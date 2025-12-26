@@ -1,0 +1,41 @@
+properties:
+  managedEnvironmentId: /subscriptions/{subscription-id}/resourceGroups/{rg-name}/providers/Microsoft.App/managedEnvironments/{env-name}
+  configuration:
+    ingress:
+      external: true
+      targetPort: 80
+      allowInsecure: false
+      traffic:
+        - latestRevision: true
+          weight: 100
+    secrets:
+      - name: connection-string
+        value: "YOUR_CONNECTION_STRING"
+    dapr:
+      enabled: false
+  template:
+    containers:
+      - name: myapp
+        image: myregistry.azurecr.io/myapp:latest
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: "Production"
+          - name: ConnectionString
+            secretRef: connection-string
+        resources:
+          cpu: 0.5
+          memory: 1Gi
+    scale:
+      minReplicas: 0
+      maxReplicas: 10
+      rules:
+        - name: http-scaling
+          http:
+            metadata:
+              concurrentRequests: "100"
+        - name: cpu-scaling
+          custom:
+            type: cpu
+            metadata:
+              type: Utilization
+              value: "70"

@@ -1,0 +1,61 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctionsDemo", "Azure Functions\AzureFunctionsDemo.csproj", "{49454193-4171-4171-4171-417141714171}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureServiceBusDemo", "Azure Service Bus\AzureServiceBusDemo.csproj", "{42534253-4253-4253-4253-425342534253}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureRedisDemo", "Azure Redis Cache\AzureRedisDemo.csproj", "{52455245-5245-5245-5245-524552455245}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAppServiceDemo", "Azure App Service\AzureAppServiceDemo.csproj", "{41504150-4150-4150-4150-415041504150}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureCognitiveDemo", "Azure Cognitive Services\AzureCognitiveDemo.csproj", "{434F434F-434F-434F-434F-434F434F434F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureCosmosDemo", "Azure Cosmos DB\AzureCosmosDemo.csproj", "{C053C053-C053-C053-C053-C053C053C053}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureEventGridDemo", "Azure Event Grid\AzureEventGridDemo.csproj", "{E6E6E6E6-E6E6-E6E6-E6E6-E6E6E6E6E6E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureKeyVaultDemo", "Azure Key Vault\AzureKeyVaultDemo.csproj", "{A115A115-A115-A115-A115-A115A115A115}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49454193-4171-4171-4171-417141714171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49454193-4171-4171-4171-417141714171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49454193-4171-4171-4171-417141714171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49454193-4171-4171-4171-417141714171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42534253-4253-4253-4253-425342534253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42534253-4253-4253-4253-425342534253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42534253-4253-4253-4253-425342534253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42534253-4253-4253-4253-425342534253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52455245-5245-5245-5245-524552455245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52455245-5245-5245-5245-524552455245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52455245-5245-5245-5245-524552455245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52455245-5245-5245-5245-524552455245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41504150-4150-4150-4150-415041504150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41504150-4150-4150-4150-415041504150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41504150-4150-4150-4150-415041504150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41504150-4150-4150-4150-415041504150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{434F434F-434F-434F-434F-434F434F434F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{434F434F-434F-434F-434F-434F434F434F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{434F434F-434F-434F-434F-434F434F434F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{434F434F-434F-434F-434F-434F434F434F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C053C053-C053-C053-C053-C053C053C053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C053C053-C053-C053-C053-C053C053C053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C053C053-C053-C053-C053-C053C053C053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C053C053-C053-C053-C053-C053C053C053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E6E6E6-E6E6-E6E6-E6E6-E6E6E6E6E6E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E6E6E6-E6E6-E6E6-E6E6-E6E6E6E6E6E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E6E6E6-E6E6-E6E6-E6E6-E6E6E6E6E6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E6E6E6-E6E6-E6E6-E6E6-E6E6E6E6E6E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A115A115-A115-A115-A115-A115A115A115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A115A115-A115-A115-A115-A115A115A115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A115A115-A115-A115-A115-A115A115A115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A115A115-A115-A115-A115-A115A115A115}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
